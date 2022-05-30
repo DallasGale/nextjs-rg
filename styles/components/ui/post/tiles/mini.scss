@@ -1,0 +1,35 @@
+.post-tile--mini {
+  flex-direction: row;
+  .post-tile--copy {
+    flex: 1;
+    order: 1;
+    max-width: 73%;
+    min-width: 73%;
+  }
+
+  .post-tile--picture {
+    background-size: 100%;
+    flex: 1;
+    order: 2;
+    max-width: 27%;
+    min-width: 27%;
+    @include respond-to(tablet) {
+      height: 5vw;
+      max-height: Rem(50px);
+    
+      img {
+        height: 5vw;
+        max-height: Rem(50px);
+
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .post-tile--title {
+    font-family: "AdobeCarlsonPro";
+    font-size: Rem(20px);
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,117 @@
+@import "./utils/helpers.scss";
+@import "./utils/mixins.scss";
+@import "./utils/variables.scss";
+@import "./utils/media_queries.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+@import "./grid.scss";
+@import "./layouts/post.scss";
+@import "./layouts/category.scss";
+@import "./layouts/page.scss";
+@import "./layouts/coming-soon.scss";
+@import "./components/ui/header.scss";
+@import "./components/ui/navigation.scss";
+@import "./components/ui/post/tiles/tile.scss";
+@import "./components/ui/post/tiles/regular.scss";
+@import "./components/ui/post/tiles/feature.scss";
+@import "./components/ui/post/tiles/mini.scss";
+@import "./components/ui/post/tiles/strip.scss";
+@import "./components/ui/post/page.scss";
+@import "./components/ui/post/header.scss";
+
+@import "./components/ui/gallery/layout.scss";
+
+@import "./components/ui/text-strip.scss";
+@import "./components/ui/mode-toggle.scss";
+@import "./components/daily-cartoon.scss";
+
+@font-face {
+  font-family: "AdobeCarlsonPro";
+  src: url("./fonts/TNYAdobeCarlsonPro-Regular.woff2") format("woff2"),
+    url("./fonts/TNYAdobeCarlsonPro-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Irvin Heading";
+  src: url("./fonts/Irvin-Heading.woff2") format("woff2"),
+    url("./fonts/Irvin-Heading.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neutraface";
+  src: url("./fonts/Neutraface.woff2") format("woff2"),
+    url("./fonts/Neutraface.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  @include mode-transition;
+  background: $white;
+  color: $black;
+  font-size: 16px;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  box-sizing: border-box;
+  &.dark {
+    background: $dark-mode;
+    color: $light-mode;
+    a {
+      color: $light-mode;
+    }
+  }
+  &.light {
+    background: $light-mode;
+    color: $black;
+
+    a {
+      color: $black;
+    }
+  }
+}
+p {
+  font-family: "AdobeCarlsonPro", serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Irvin Heading";
+}
+
+ul {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.page-width {
+  max-width: $pageWidth;
+  margin: 0 auto;
+}

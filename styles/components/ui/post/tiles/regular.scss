@@ -1,0 +1,23 @@
+.post-tile--regular {
+  .post-tile--picture {
+    background-size: 100%;
+
+    @include respond-to(tablet) {
+      height: 15vw;
+      max-height: Rem(300px);
+      
+      img {
+        height: 15vw;
+        max-height: Rem(300px);
+      }
+    }
+  }
+
+  .post-tile--title {
+    font-size: Rem(18px);
+  }
+
+  .post-tile--excerpt {
+    font-size: Rem(18px);
+  }
+}

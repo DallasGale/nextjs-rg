@@ -1,0 +1,65 @@
+.post-tile {
+  border-bottom: Rem(1px) solid #cccccc;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: Rem(10px);
+  padding-top: Rem(10px);
+  position: relative;
+  width: 100%;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.post-tile--picture {
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 1;
+  margin-bottom: Rem(10px);
+  height: 30vh;
+  max-height: 30vh;
+  
+  img {
+    object-fit: cover;
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+  }
+}
+
+.post-tile--category {
+  color: $red;
+  display: block;
+  font-family: "Irvin Heading";
+  text-transform: uppercase;
+  margin-bottom: Rem(10px);
+}
+
+.post-tile--author {
+  font-family: "Neutraface";
+}
+.post-tile--title {
+  margin-bottom: Rem(10px);
+}
+
+.post-tile--excerpt {
+  margin-bottom: Rem(10px);
+}
+
+body.dark {
+  .post-tile {
+    border-color: $black;
+  }
+  .post-tile--category {
+    color: $light-mode;
+  }
+}
+body.light {
+  .post-tile {
+    border-color: $grey;
+  }
+
+  .post-tile--category {
+    color: $red;
+  }
+}

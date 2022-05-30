@@ -1,0 +1,27 @@
+.post-tile--strip {
+  flex-direction: row;
+
+  .post-tile--copy {
+    max-width: 70%;
+    min-width: 70%;
+  }
+
+  .post-tile--picture {
+    max-width: 30%;
+    min-width: 30%;
+    flex: 1;
+    order: 2;
+
+    @include respond-to(tablet) {
+      height: 5vw;
+      max-height: Rem(50px);
+
+      img {
+        height: 10vw;
+        max-height: Rem(125px);
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

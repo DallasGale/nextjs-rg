@@ -1,0 +1,18 @@
+.daily-cartoon {
+  &__image {
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    img {
+      flex: 1;
+      display: flex;
+      margin: 0 auto;
+      max-width: 50%;
+    }
+  }
+  blockquote {
+    margin-top: Rem(40px);
+    font-family: "AdobeCarlsonPro";
+    text-align: center;
+  }
+}

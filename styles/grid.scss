@@ -1,0 +1,119 @@
+$border-offset: 1rem;
+$grid--gap: Rem(32px);
+%grid {
+  box-sizing: border-box;
+  opacity: 0.05;
+  display: block;
+  column-gap: $grid--gap;
+  padding-left: Rem(20px);
+  padding-right: Rem(20px);
+  grid-template-columns: [col1Start] 1fr [col2Start] 1fr [col3Start] 1fr [col4Start] 1fr [col5Start] 1fr [col6Start] 1fr [col7Start] 1fr [col8Start] 1fr [col9Start] 1fr [col10Start] 1fr [col11Start] 1fr [col12Start] 1fr [col13Start];
+ 
+  width: 100%;
+  margin: 0 auto;
+  @include respond-to(tablet) {
+    display: grid;
+    max-width: $maxWidth; 
+    padding-left: Rem(64px);
+    padding-right: Rem(64px);
+  }
+}
+.grid {
+  @extend %grid;
+  position: relative;
+  opacity: 1;
+}
+
+// For development
+.grid-overlay {
+  @extend %grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  div {
+    height: 100%;
+  }
+}
+
+.grid.above-fold {
+  height: 100%;
+  margin-top: Rem(10px);
+  max-width: Rem(1200px);
+}
+
+.grid-col--thumbnail-posts {
+  @include respond-to(tablet) {
+    grid-column: col1Start / col4Start;
+  }
+}
+
+.grid-col--featured-posts {
+  position: relative;
+  @include respond-to(tablet) {
+    grid-column: col4Start / col10Start;
+  }
+  &:before {
+    content: "";
+    height: 100%;
+    left: -16px;
+    top: 0;
+    width: Rem(1px);
+    position: absolute;
+  }
+  &:after {
+    content: "";
+    height: 100%;
+    right: -16px;
+    top: 0;
+    width: Rem(1px);
+    position: absolute;
+  }
+}
+
+.grid-col--news-culture {
+  grid-column: col10Start / col13Start;
+}
+
+.grid.four-col {
+  .four-col-grid__col {
+    &:nth-child(1) {
+      grid-column: col1Start / col4Start;
+    }
+    &:nth-child(2) {
+      grid-column: col4Start / col7Start;
+    }
+    &:nth-child(3) {
+      grid-column: col7Start / col10Start;
+    }
+    &:nth-child(4) {
+      grid-column: col10Start / col13Start;
+    }
+  }
+}
+
+.grid.two-col {
+  .two-col-grid__col {
+    &:nth-child(1) {
+      grid-column: col1Start / col7Start;
+    }
+    &:nth-child(2) {
+      grid-column: col7Start / col13Start;
+    }
+  }
+}
+
+body.dark {
+  .grid-col--featured-posts:before,
+  .grid-col--featured-posts:after {
+    background: $black;
+  }
+}
+body.light {
+  .grid-col--featured-posts:before,
+  .grid-col--featured-posts:after {
+    background: #cccccc;
+  }
+}

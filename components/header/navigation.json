@@ -1,0 +1,32 @@
+[
+  {
+    "label": "News",
+    "slug": "/coming-soon",
+    "color": "firebrick"
+  },
+  {
+    "label": "Books & Culture",
+    "slug": "/coming-soon",
+    "color": "aquamarine"
+  },
+  {
+    "label": "Humour & Cartoons",
+    "slug": "/coming-soon",
+    "color": "goldenrod"
+  },
+  {
+    "label": "Puzzles & Games (and Lego)",
+    "slug": "/coming-soon",
+    "color": "violet"
+  },
+  {
+    "label": "Video",
+    "slug": "/coming-soon",
+    "color": "bisque"
+  },
+  {
+    "label": "Goings on",
+    "slug": "/coming-soon",
+    "color": "cyan"
+  }
+]

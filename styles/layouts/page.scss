@@ -1,0 +1,9 @@
+.page-content {
+  margin-top: Rem(123px);
+  padding-bottom: Rem(50px);
+  position: relative;
+  display: block;
+  &.home {
+    margin-top: Rem(190px);
+  }
+}
