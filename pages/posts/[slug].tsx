@@ -1,23 +1,32 @@
 import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
+import _ from "lodash";
 
 // import MoreStories from "../../components/more-stories"
 import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
 import SectionSeparator from "../../components/section-seperator";
-import { request } from "../../lib/datocms";
+import Layout from "../../components/layout";
+import Container from "../../components/container";
 
 // Types
 import type { GetStaticProps, GetStaticPaths } from "next";
 
 // Graphql
-import { POST_QUERY } from "../../lib/query";
+import { request } from "../../lib/datocms";
+import { POST_QUERY, HOMEPAGE_QUERY } from "../../lib/query";
 
 type PostType = {
   slug: string;
 };
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await request({ query: `{ allPosts { slug } }` });
+  const data = await request({
+    query: `{ allPosts { slug } }`,
+    variables: null,
+    preview: false,
+  });
+
+  console.log({ data });
 
   return {
     paths: data.allPosts.map((post: PostType) => `/posts/${post.slug}`),
@@ -25,43 +34,34 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-// const CATEGORIES_QUERY = `query AllCategoties {
-//   allCategories {
-//     name
-//     slug
-//     id
-//   }
-// }`;
-
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
-  // const category_data = await request({
-  //   query: CATEGORIES_QUERY,
-  //   variables: {},
-  //   preview: false,
-  // });
-  const graphqlRequest = {
+  const postRequest = {
     query: POST_QUERY,
     preview,
     variables: {
       slug: params?.slug,
     },
   };
-
+  const allPostData = await request({
+    query: HOMEPAGE_QUERY,
+    variables: null,
+    preview: false,
+  });
   return {
     props: {
-      // category_data,
+      allPostData,
       subscription: preview
         ? {
-            ...graphqlRequest,
-            initialData: await request(graphqlRequest),
+            ...postRequest,
+            initialData: await request(postRequest),
             token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
           }
         : {
             enabled: false,
-            initialData: await request(graphqlRequest),
+            initialData: await request(postRequest),
           },
     },
   };
@@ -69,44 +69,57 @@ export const getStaticProps: GetStaticProps = async ({
 
 type PostPageType = {
   subscription: any;
-  category_data: any;
+  allPostData: any;
 };
 
-const PostPage: React.FC<PostPageType> = ({ subscription, category_data }) => {
+// export async function getStaticProps() {
+//   const homeData = await request({
+//     query: HOMEPAGE_QUERY,
+//     variables: null,
+//     preview: false,
+//   });
+//   return {
+//     props: { homeData },
+//   };
+// }
+
+const PostPage: React.FC<PostPageType> = ({ subscription, allPostData }) => {
   const {
     data: { site, post, morePosts },
   } = useQuerySubscription(subscription);
 
-  // console.log({ category_data });
-
+  const categories = allPostData.allPosts.map(
+    (post: any) => post.category.name
+  );
   return (
-    <>
-      <div className="page-content">
-        <PostHeader
-          coverImage={post.coverImage.url}
-          blurUpThumb={post.coverImage.blurUpThumb}
-          // focalPoint={post.coverImage.focalPoint}
-          title={post.title}
-          category={post.category.name}
-          excerpt={post.excerpt}
-          author={post.author.name}
-          date={post.date}
-        />
-        <article className="post-layout">
-          {console.log(post.content)}
-          {post.content.value.document.children.map((a) =>
-            a.children.map((b) => {
-              return (
-                <p key={b.id} className="post-paragraph">
-                  {b.value}
-                </p>
-              );
-            })
-          )}
-        </article>
-      </div>
-      <SectionSeparator />
-    </>
+    <Layout navItems={_.uniq(categories)}>
+      <Container>
+        <div className="page-content">
+          <PostHeader
+            coverImage={post.coverImage}
+            blurUpThumb={post.coverImage.blurUpThumb}
+            title={post.title}
+            category={post.category.name}
+            excerpt={post.excerpt}
+            author={post.author.name}
+            date={post.date}
+          />
+          <article className="post-layout">
+            {console.log(post.content)}
+            {post.content.value.document.children.map((a) =>
+              a.children.map((b) => {
+                return (
+                  <p key={b.id} className="post-paragraph">
+                    {b.value}
+                  </p>
+                );
+              })
+            )}
+          </article>
+        </div>
+        <SectionSeparator />
+      </Container>
+    </Layout>
   );
 };
 

@@ -5,6 +5,7 @@ import _ from "lodash";
 // Components
 import Header from "../components/header";
 import PostTile from "../components/post-tile";
+import TextStrip from "../components/text-strip";
 
 // GraphQl
 import { request } from "../lib/datocms";
@@ -27,10 +28,10 @@ export async function getStaticProps() {
 }
 
 const Home: React.FC<HomeType> = ({ homeData }) => {
-  const featurePost = homeData.allPosts[2];
-  const stripPost = homeData.allPosts[3];
+  const featurePost = homeData.allPosts[4];
+  const stripPostTop = homeData.allPosts[5];
+  const stripPostBottom = homeData.allPosts[6];
 
-  // console.log(_.uniq(categories));
   const categories = homeData.allPosts.map(
     (post: PostType) => post.category.name
   );
@@ -44,19 +45,17 @@ const Home: React.FC<HomeType> = ({ homeData }) => {
 
     <Layout navItems={_.uniq(categories)}>
       <Container>
-        {/* <Header navItems={_.uniq(categories)} /> */}
-
         <div className="page-content home">
-          {/* <TextStrip
-          image={{ src: "/eustace-400.png", alt: "Support Buzzz" }}
-          justifyContent="center"
-          text="Support <i>Buzz the boy's</i> award winning journalism. <a href='/'>Subscribe today »"
-        /> */}
+          <TextStrip
+            image={{ src: "/eustace-400.png", alt: "Support Buzzz" }}
+            justifyContent="center"
+            text="Support <i>Buzz the boy's</i> award winning journalism. <a href='/'>Subscribe today »"
+          />
 
           <div className="grid above-fold">
             <div className="grid-col--thumbnail-posts">
               {homeData.allPosts
-                .slice(0, 2)
+                .slice(0, 3)
                 .map(
                   ({
                     id,
@@ -98,21 +97,33 @@ const Home: React.FC<HomeType> = ({ homeData }) => {
                 author={featurePost.author.name}
               />
               <PostTile
-                id={stripPost.id}
-                slug={stripPost.slug}
+                id={stripPostTop.id}
+                slug={stripPostTop.slug}
                 tileType="strip"
-                title={stripPost.title}
-                category={stripPost.category.name}
-                excerpt={stripPost.excerpt}
-                coverImage={stripPost.coverImage}
-                blurUpThumb={stripPost.coverImage.blurUpThumb}
-                author={stripPost.author.name}
+                title={stripPostTop.title}
+                category={stripPostTop.category.name}
+                excerpt={stripPostTop.excerpt}
+                coverImage={stripPostTop.coverImage}
+                blurUpThumb={stripPostTop.coverImage.blurUpThumb}
+                author={stripPostTop.author.name}
+              />
+              <PostTile
+                id={stripPostBottom.id}
+                slug={stripPostBottom.slug}
+                tileType="strip"
+                title={stripPostBottom.title}
+                category={stripPostBottom.category.name}
+                excerpt={stripPostBottom.excerpt}
+                coverImage={stripPostBottom.coverImage}
+                blurUpThumb={stripPostBottom.coverImage.blurUpThumb}
+                author={stripPostBottom.author.name}
               />
             </div>
 
             <div className="grid-col--news-culture">
+              <h2 className="title">News & Culture</h2>
               {homeData.allPosts
-                .slice(3)
+                .slice(7, 16)
                 .map(
                   ({
                     id,
@@ -133,7 +144,6 @@ const Home: React.FC<HomeType> = ({ homeData }) => {
                         category={category.name}
                         excerpt={excerpt}
                         coverImage={coverImage}
-                        // focalPoint={coverImage.focalPoint}
                         blurUpThumb={coverImage.blurUpThumb}
                         author={author.name}
                       />

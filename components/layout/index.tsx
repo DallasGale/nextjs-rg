@@ -12,6 +12,7 @@ const Layout: React.FC<LayoutType> = ({ children, navItems }) => {
       <div className="min-h-screen">
         <main>{children}</main>
       </div>
+      <footer />
     </>
   );
 };

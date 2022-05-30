@@ -4,6 +4,7 @@
   .post-tile--copy {
     max-width: 70%;
     min-width: 70%;
+    padding-right: Rem(10px);
   }
 
   .post-tile--picture {
@@ -13,12 +14,10 @@
     order: 2;
 
     @include respond-to(tablet) {
-      height: 5vw;
-      max-height: Rem(50px);
-
       img {
-        height: 10vw;
-        max-height: Rem(125px);
+        width: auto !important;
+        height: 100%;
+        max-height: Rem(150px);
         width: 100%;
         object-fit: cover;
       }

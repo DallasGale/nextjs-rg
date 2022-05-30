@@ -25,7 +25,12 @@ const Picture: React.VFC<Props> = ({
   return (
     <div className={`picture ${modifierClass ? modifierClass : ""}`}>
       <a href={slug}>
-        <Image data={coverImage.responsiveImage} fadeInDuration={1000} />
+        <Image
+          pictureClassName="picture__img"
+          data={coverImage.responsiveImage}
+          fadeInDuration={1000}
+          // layout="responsive"
+        />
       </a>
     </div>
   );

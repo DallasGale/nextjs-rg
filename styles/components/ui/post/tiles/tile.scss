@@ -1,5 +1,5 @@
 .post-tile {
-  border-bottom: Rem(1px) solid #cccccc;
+  border-bottom: Rem(1px) solid $border;
   display: flex;
   flex-direction: column;
   padding-bottom: Rem(10px);
@@ -18,7 +18,10 @@
   margin-bottom: Rem(10px);
   height: 30vh;
   max-height: 30vh;
-  
+  @include respond-to(tablet) {
+    height: auto;
+  }
+
   img {
     object-fit: cover;
     width: 100%;
@@ -33,13 +36,18 @@
   font-family: "Irvin Heading";
   text-transform: uppercase;
   margin-bottom: Rem(10px);
+  margin-top: Rem(10px);
 }
 
 .post-tile--author {
   font-family: "Neutraface";
+  margin-bottom: Rem(10px);
 }
 .post-tile--title {
   margin-bottom: Rem(10px);
+  &.feature {
+    font-size: Rem(36px);
+  }
 }
 
 .post-tile--excerpt {

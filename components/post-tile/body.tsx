@@ -1,8 +1,8 @@
 import React from "react";
 import Picture from "../picture";
-import { Props } from "./types";
+import { PostTileType } from "./types";
 
-const PostBody: React.VFC<Props> = ({
+const PostBody: React.VFC<PostTileType> = ({
   coverImage,
   blurUpThumb,
   // focalPoint,
@@ -57,7 +57,7 @@ const PostBody: React.VFC<Props> = ({
       )}
       <div className="post-tile--copy">
         <small className="post-tile--category">{category}</small>
-        <h2 className="post-tile--title">
+        <h2 className={`post-tile--title ${tileType}`}>
           <a href={`/posts/${slug}`}>{title} </a>
         </h2>
         {tileType !== "mini" && (
