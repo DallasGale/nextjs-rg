@@ -1,19 +1,25 @@
 .text-strip {
-  align-items: center;
+  align-items: flex-end;
   border-bottom: 1px solid $grey;
   border-top: 1px solid $grey;
   display: flex;
-  height: Rem(100px);
-  // max-width: $pageWidth;
+  height: auto;
   margin: 0 auto;
-  text-align: center;
-  justify-content: center;
   margin-bottom: Rem(20px);
   margin-top: Rem(20px);
-  * {
+  // @include respond-to(desktop) {
+  //   align-items: center;
+  //   justify-content: center;
+  //   text-align: center;
+  // }
+  h2 {
     font-family: "AdobeCarlsonPro";
-    font-size: Rem(19px);
+    font-size: Rem(15px);
     font-weight: 100;
+    padding-bottom: Rem(20px);
+    @include respond-to(tablet) {
+      font-size: Rem(19px);
+    }
   }
   a {
     color: rgb(8, 121, 191);

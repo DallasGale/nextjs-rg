@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { Image, ResponsiveImageType } from "react-datocms";
 interface Props {
@@ -24,14 +25,12 @@ const Picture: React.VFC<Props> = ({
   console.log({ coverImage });
   return (
     <div className={`picture ${modifierClass ? modifierClass : ""}`}>
-      <a href={slug}>
-        <Image
-          pictureClassName="picture__img"
-          data={coverImage.responsiveImage}
-          fadeInDuration={1000}
-          // layout="responsive"
-        />
-      </a>
+      <Image
+        pictureClassName="picture__img"
+        data={coverImage.responsiveImage}
+        fadeInDuration={1000}
+        // layout="responsive"
+      />
     </div>
   );
 };

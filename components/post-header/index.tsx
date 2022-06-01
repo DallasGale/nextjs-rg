@@ -42,16 +42,10 @@ const PostHeader: React.FC<PostHeaderType> = ({
         </div>
 
         <div className="two-col-grid__col">
-          <picture
+          <Image
             className="post-header__picture"
-            style={{ backgroundImage: `url(${blurUpThumb}` }}
-          >
-            {/* <source srcSet={`${coverImage}?auto=format&h=900`} /> */}
-            <Image
-              data={coverImage.responsiveImage}
-              // src={`${image}?auto=format&h=900&crop=focalpoint&fp-x=${focalPoint.x}&fp-y=${focalPoint.y}`}
-            />
-          </picture>
+            data={coverImage.responsiveImage}
+          />
         </div>
       </div>
     </>

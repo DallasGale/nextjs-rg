@@ -1,6 +1,7 @@
 import React from "react";
 import Picture from "../picture";
 import { PostTileType } from "./types";
+import Link from "next/link";
 
 const PostBody: React.VFC<PostTileType> = ({
   coverImage,
@@ -58,11 +59,11 @@ const PostBody: React.VFC<PostTileType> = ({
       <div className="post-tile--copy">
         <small className="post-tile--category">{category}</small>
         <h2 className={`post-tile--title ${tileType}`}>
-          <a href={`/posts/${slug}`}>{title} </a>
+          <Link href={`/posts/${slug}`}>{title}</Link>
         </h2>
         {tileType !== "mini" && (
           <p className="post-tile--excerpt">
-            <a href={`/posts/${slug}`}>{excerpt}</a>
+            <Link href={`/posts/${slug}`}>{excerpt}</Link>
           </p>
         )}
         <p className="post-tile--author">{author}</p>

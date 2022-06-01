@@ -27,19 +27,28 @@
 
 .post-header__category {
   color: $red;
-  margin-bottom: Rem(50px);
+  @include respond-to(tablet) {
+    margin-bottom: Rem(50px);
+  }
 }
 
 .post-header__title {
-  font-size: Rem(45px);
+  font-size: Rem(35px);
+  @include respond-to(tablet) {
+    font-size: Rem(45px);
+  }
 }
 
 .post-header__excerpt {
   font-family: "AdobeCarlsonPro";
-  margin-bottom: Rem(25px);
-  margin-top: Rem(25px);
+  margin-bottom: Rem(15px);
+  margin-top: Rem(15px);
   font-style: italic;
   font-size: Rem(20px);
+  @include respond-to(tablet) {
+    margin-bottom: Rem(25px);
+    margin-top: Rem(25px);
+  }
 }
 .post-header__author {
   font-family: "Neutraface";
@@ -51,4 +60,8 @@
   @include sanserif;
   text-transform: uppercase;
   font-size: Rem(11px);
+  margin-bottom: Rem(40px);
+  @include respond-to(tablet) {
+    margin-bottom: 0;
+  }
 }

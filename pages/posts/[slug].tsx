@@ -2,10 +2,8 @@ import Head from "next/head";
 import { renderMetaTags, useQuerySubscription } from "react-datocms";
 import _ from "lodash";
 
-// import MoreStories from "../../components/more-stories"
 import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
-import SectionSeparator from "../../components/section-seperator";
 import Layout from "../../components/layout";
 import Container from "../../components/container";
 
@@ -117,7 +115,6 @@ const PostPage: React.FC<PostPageType> = ({ subscription, allPostData }) => {
             )}
           </article>
         </div>
-        <SectionSeparator />
       </Container>
     </Layout>
   );

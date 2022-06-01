@@ -1,5 +1,5 @@
 .nav {
-  // display: none;
+  display: none;
   @include respond-to(desktop) {
     border-bottom: 1px solid $grey;
     border-top: 1px solid $grey;
@@ -25,8 +25,11 @@
 
 .nav__ul {
   display: inline-flex;
-  height: Rem(48px);
+  flex-wrap: wrap;
   position: relative;
+  height: Rem(48px);
+  @include respond-to(tablet) {
+  }
 }
 
 .nav__li {
