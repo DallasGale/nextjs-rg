@@ -104,8 +104,8 @@ const PostPage: React.FC<PostPageType> = ({ subscription, allPostData }) => {
           />
           <article className="post-layout">
             {console.log(post.content)}
-            {post.content.value.document.children.map((a) =>
-              a.children.map((b) => {
+            {post.content.value.document.children.map((a: any) =>
+              a.children.map((b: any) => {
                 return (
                   <p key={b.id} className="post-paragraph">
                     {b.value}
