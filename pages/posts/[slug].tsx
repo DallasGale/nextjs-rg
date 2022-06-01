@@ -70,17 +70,6 @@ type PostPageType = {
   allPostData: any;
 };
 
-// export async function getStaticProps() {
-//   const homeData = await request({
-//     query: HOMEPAGE_QUERY,
-//     variables: null,
-//     preview: false,
-//   });
-//   return {
-//     props: { homeData },
-//   };
-// }
-
 const PostPage: React.FC<PostPageType> = ({ subscription, allPostData }) => {
   const {
     data: { site, post, morePosts },

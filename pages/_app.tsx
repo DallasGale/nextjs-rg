@@ -44,7 +44,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     }
   }
 
-  console.log({ isAuthorised });
   if (isAuthorised) {
     return <Component {...pageProps} />;
   }

@@ -12,7 +12,7 @@ import { request } from "../lib/datocms";
 import { HOMEPAGE_QUERY } from "../lib/query";
 
 // Types
-import type { HomeType, PostType } from "./types";
+import type { HomeType, PostType } from "../types";
 import Layout from "../components/layout";
 import Container from "../components/container";
 
