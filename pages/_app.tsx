@@ -51,7 +51,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <div className="form-container">
-      <h1 className="form-headline">Welcome to Buzz's blog!</h1>
+      <h1 className="form-headline">Welcome to Buzz&apos;s blog!</h1>
       <form className="form">
         <input
           type="email"
