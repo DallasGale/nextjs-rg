@@ -1,0 +1,65 @@
+.form-container {
+  background-color: #242424;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.form {
+  background-color: #424242;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: Rem(10px);
+  width: 100%;
+  max-width: 80vw;
+  box-shadow: -1px -1px 199px 0px rgba(177, 242, 255, 0.75);
+  -webkit-box-shadow: -1px -1px 199px 0px rgba(158, 158, 158, 0.75);
+  -moz-box-shadow: -1px -1px 199px 0px rgba(177, 242, 255, 0.75);
+  @include respond-to(tablet) {
+    max-width: 50vw;
+  }
+  @include respond-to(desktop) {
+    max-width: 30vw;
+  }
+  input {
+    border-radius: 5px;
+    padding: Rem(15px);
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
+  }
+  button {
+    color: white;
+    border-radius: Rem(5px);
+    padding: Rem(15px);
+    outline: none;
+    border: none;
+    width: 100%;
+    background-color: rgb(30, 30, 30);
+    font-weight: bold;
+    transform: translateY(0);
+    transition: all 0.15s;
+    cursor: pointer;
+    &:hover {
+      transform: translateY(2px);
+      transition: all 0.3s;
+    }
+  }
+}
+
+.form-headline {
+  color: white;
+  margin-bottom: Rem(30px);
+  font-size: Rem(18px);
+  @include respond-to(tablet) {
+    font-size: Rem(35px);
+  }
+}

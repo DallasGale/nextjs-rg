@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import "../styles/index.scss";
+import { useAuthorised } from "../hooks/useAuthorised";
 import type { AppProps } from "next/app";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [isAuthorised, setIsAuthorised] = useState(false);
-  const [email, setEmail] = useState("user@email.com");
-  const [password, setPassword] = useState("***");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (
@@ -23,8 +24,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       setIsAuthorised(true);
     }
   }, []);
-
-  // console.log(process.env.NEXT_PUBLIC_AUTHORISED_USER_1);
 
   function handleFormSubmit(e: any) {
     e.preventDefault();
@@ -44,26 +43,33 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     }
   }
 
+  // const isAuthorised = useAuthorised()
+
   if (isAuthorised) {
     return <Component {...pageProps} />;
   }
 
   return (
-    <form>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleFormSubmit} type="submit">
-        Login
-      </button>
-    </form>
+    <div className="form-container">
+      <h1 className="form-headline">Welcome to Buzz's blog!</h1>
+      <form className="form">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="email@address.com"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="password"
+        />
+        <button onClick={handleFormSubmit} type="submit">
+          Login
+        </button>
+      </form>
+    </div>
   );
 };
 
