@@ -12,11 +12,13 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 
 // Graphql
 import { request } from "../../lib/datocms";
-import { POST_QUERY, HOMEPAGE_QUERY } from "../../lib/query";
+import { POST_QUERY, ALL_POSTS_QUERY } from "../../lib/query";
+import { PostType } from "../../types";
+import { NavType } from "../../components/header";
 
-type PostType = {
-  slug: string;
-};
+// Utils
+import { parseCategories } from "../../utils/parseCategories";
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await request({
     query: `{ allPosts { slug } }`,
@@ -27,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   console.log({ data });
 
   return {
-    paths: data.allPosts.map((post: PostType) => `/posts/${post.slug}`),
+    paths: data.allPosts.map((post: { slug: string }) => `/posts/${post.slug}`),
     fallback: false,
   };
 };
@@ -44,7 +46,7 @@ export const getStaticProps: GetStaticProps = async ({
     },
   };
   const allPostData = await request({
-    query: HOMEPAGE_QUERY,
+    query: ALL_POSTS_QUERY,
     variables: null,
     preview: false,
   });
@@ -72,19 +74,16 @@ type PostPageType = {
 
 const PostPage: React.FC<PostPageType> = ({ subscription, allPostData }) => {
   const {
-    data: { site, post, morePosts },
+    data: { post },
   } = useQuerySubscription(subscription);
 
-  const categories = allPostData.allPosts.map(
-    (post: any) => post.category.name
-  );
+  const navItems = parseCategories(allPostData);
   return (
-    <Layout navItems={_.uniq(categories)}>
+    <Layout navItems={navItems}>
       <Container>
         <div className="page-content">
           <PostHeader
             coverImage={post.coverImage}
-            blurUpThumb={post.coverImage.blurUpThumb}
             title={post.title}
             category={post.category.name}
             excerpt={post.excerpt}

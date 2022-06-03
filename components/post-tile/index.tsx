@@ -5,9 +5,8 @@ import { PostTileType } from "./types";
 const PostTile: React.FC<PostTileType> = ({
   id,
   slug,
+  date,
   coverImage,
-  // focalPoint,
-  blurUpThumb,
   category,
   title,
   excerpt,
@@ -18,11 +17,10 @@ const PostTile: React.FC<PostTileType> = ({
     return (
       <div className="post-tile post-tile--feature">
         <PostBody
+          date={date}
           id={id}
           slug={slug}
           coverImage={coverImage}
-          // focalPoint={focalPoint}
-          blurUpThumb={blurUpThumb}
           category={category}
           title={title}
           excerpt={excerpt}
@@ -35,11 +33,10 @@ const PostTile: React.FC<PostTileType> = ({
     return (
       <div className="post-tile post-tile--mini">
         <PostBody
+          date={date}
           id={id}
           slug={slug}
           coverImage={coverImage}
-          // focalPoint={focalPoint}
-          blurUpThumb={blurUpThumb}
           category={category}
           title={title}
           excerpt={excerpt}
@@ -52,11 +49,10 @@ const PostTile: React.FC<PostTileType> = ({
     return (
       <div className="post-tile post-tile--strip">
         <PostBody
+          date={date}
           id={id}
           slug={slug}
           coverImage={coverImage}
-          // focalPoint={focalPoint}
-          blurUpThumb={blurUpThumb}
           category={category}
           title={title}
           excerpt={excerpt}
@@ -69,11 +65,10 @@ const PostTile: React.FC<PostTileType> = ({
     return (
       <div className="post-tile post-tile--regular">
         <PostBody
+          date={date}
           id={id}
           slug={slug}
           coverImage={coverImage}
-          // focalPoint={focalPoint}
-          blurUpThumb={blurUpThumb}
           category={category}
           title={title}
           excerpt={excerpt}

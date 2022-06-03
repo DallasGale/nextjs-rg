@@ -10,16 +10,7 @@ const PostBody: React.FC<PostBodyType> = ({ content }) => {
         <StructuredText
           data={content}
           renderBlock={({ record }) => {
-            // if (record.__typename === "ImageBlockRecord") {
-            //   return <Image data={record?.image?.responsiveImage} alt="" />;
-            // }
-
-            return (
-              <>
-                <p>Dont know how to render a block!</p>
-                <pre>{JSON.stringify(record, null, 2)}</pre>
-              </>
-            );
+            return <pre>{JSON.stringify(record, null, 2)}</pre>;
           }}
         />
       </div>

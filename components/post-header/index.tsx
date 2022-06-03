@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, ResponsiveImageType } from "react-datocms";
+import { formatDate } from "../../utils/formatDate";
 
 type PostHeaderType = {
   coverImage: {
@@ -10,7 +11,6 @@ type PostHeaderType = {
   excerpt: string;
   date: string;
   category: string;
-  blurUpThumb: string;
 };
 const PostHeader: React.FC<PostHeaderType> = ({
   coverImage,
@@ -19,15 +19,7 @@ const PostHeader: React.FC<PostHeaderType> = ({
   excerpt,
   date,
   category,
-  blurUpThumb,
 }) => {
-  const options = { month: "long", day: "numeric", year: "numeric" };
-  let isoDate = new Date(date).toISOString();
-  let newDate = new Date(isoDate);
-  let intlDate = new Intl.DateTimeFormat("en-US", options as any).format(
-    newDate
-  );
-
   return (
     <>
       <div className="grid two-col post-header">
@@ -37,7 +29,7 @@ const PostHeader: React.FC<PostHeaderType> = ({
             <h1 className="post-header__title">{title}</h1>
             <p className="post-header__excerpt">{excerpt}</p>
             <h2 className="post-header__author">By {author}</h2>
-            <small className="post-header__date">{intlDate}</small>
+            <small className="post-header__date">{formatDate(date)}</small>
           </div>
         </div>
 

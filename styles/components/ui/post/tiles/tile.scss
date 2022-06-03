@@ -46,6 +46,10 @@
   font-family: "Neutraface";
   margin-bottom: Rem(10px);
 }
+.post-tile--date {
+  font-size: 11px;
+  color: #999999;
+}
 .post-tile--title {
   margin-bottom: Rem(10px);
   &.feature {

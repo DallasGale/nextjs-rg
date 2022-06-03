@@ -1,16 +1,17 @@
+import { useState } from "react";
 import Link from "next/link";
 
 interface Props {
-  navItems: string[];
+  navItems: NavType[];
 }
 
-// type NavType = {
-//   name: string;
-//   slug: string;
-//   id: string;
-// };
+export type NavType = {
+  name: string;
+  slug: string;
+};
 
 const Header: React.FC<Props> = ({ navItems }) => {
+  const [toggleNav, setToggleNav] = useState(false);
   return (
     <header className="header">
       <Link href="/" passHref={true}>
@@ -18,17 +19,26 @@ const Header: React.FC<Props> = ({ navItems }) => {
           <img src="/new-yorker.svg" alt="The New Yorker" />
         </h1>
       </Link>
-      <nav className="nav">
+      <button onClick={() => setToggleNav(!toggleNav)} className="nav-toggler">
+        Categories
+      </button>
+      <nav className={`nav ${toggleNav ? "show" : "hide"}`}>
+        <button onClick={() => setToggleNav(!toggleNav)} className="nav-close">
+          Close nav
+        </button>
         <ul className="nav__ul">
           {navItems ? (
             <>
-              {navItems.map((data) => {
-                const slug = data.toLowerCase();
+              {navItems.map((nav: NavType) => {
                 return (
-                  <li key={data} className="nav__li">
-                    <a className="nav__link" href={`/categories/${slug}`}>
-                      {data}
-                    </a>
+                  <li
+                    key={nav.slug}
+                    className="nav__li"
+                    onClick={() => setToggleNav(false)}
+                  >
+                    <Link className="nav__link" href={`/category/${nav.slug}`}>
+                      {nav.name}
+                    </Link>
                   </li>
                 );
               })}

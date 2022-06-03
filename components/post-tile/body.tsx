@@ -2,11 +2,11 @@ import React from "react";
 import Picture from "../picture";
 import { PostTileType } from "./types";
 import Link from "next/link";
+import { formatDate } from "../../utils/formatDate";
 
 const PostBody: React.VFC<PostTileType> = ({
   coverImage,
-  blurUpThumb,
-  // focalPoint,
+  date,
   slug,
   category,
   title,
@@ -21,8 +21,6 @@ const PostBody: React.VFC<PostTileType> = ({
           modifierClass="post-tile--picture"
           height="900"
           coverImage={coverImage}
-          blurUpThumb={blurUpThumb}
-          // focalPoint={focalPoint}
           slug={`/posts/${slug}`}
         />
       )}
@@ -31,8 +29,6 @@ const PostBody: React.VFC<PostTileType> = ({
           modifierClass="post-tile--picture"
           height="400"
           coverImage={coverImage}
-          blurUpThumb={blurUpThumb}
-          // focalPoint={focalPoint}
           slug={`/posts/${slug}`}
         />
       )}
@@ -41,8 +37,6 @@ const PostBody: React.VFC<PostTileType> = ({
           modifierClass="post-tile--picture"
           height="300"
           coverImage={coverImage}
-          blurUpThumb={blurUpThumb}
-          // focalPoint={focalPoint}
           slug={`/posts/${slug}`}
         />
       )}
@@ -51,8 +45,6 @@ const PostBody: React.VFC<PostTileType> = ({
           modifierClass="post-tile--picture"
           height="100"
           coverImage={coverImage}
-          blurUpThumb={blurUpThumb}
-          // focalPoint={focalPoint}
           slug={`/posts/${slug}`}
         />
       )}
@@ -66,7 +58,12 @@ const PostBody: React.VFC<PostTileType> = ({
             <Link href={`/posts/${slug}`}>{excerpt}</Link>
           </p>
         )}
-        <p className="post-tile--author">{author}</p>
+        <p className="post-tile--author">
+          {author}
+
+          <br />
+          <span className="post-tile--date">{formatDate(date)}</span>
+        </p>
       </div>
     </>
   );

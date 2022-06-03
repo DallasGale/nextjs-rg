@@ -2,12 +2,12 @@ import { ResponsiveImageType } from "react-datocms";
 
 export interface PostTileType {
   id: string;
+  date: string;
   author: string;
   slug: string;
   coverImage: {
     responsiveImage: ResponsiveImageType;
   };
-  blurUpThumb: string;
   category: string;
   title: string;
   excerpt: string;

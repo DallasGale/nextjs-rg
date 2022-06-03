@@ -8,8 +8,10 @@ export type HomeType = NextPage & {
 export type PostType = {
   id: string;
   title: string;
+  date: string;
   category: {
     name: string;
+    slug: string;
   };
   excerpt: string;
   coverImage: {

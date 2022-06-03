@@ -1,15 +1,42 @@
 .nav {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  visibility: hidden;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: $white;
+  position: fixed;
+
+  &.show {
+    visibility: visible;
+  }
+  &.hide {
+    visibility: hidden;
+  }
   @include respond-to(desktop) {
     border-bottom: 1px solid $grey;
+    background: $white;
     border-top: 1px solid $grey;
     background: $white;
     display: flex;
     min-height: Rem(47px);
     align-items: center;
+    height: auto;
     justify-content: center;
     width: 100%;
     position: relative;
+    visibility: visible;
+    &.hide {
+      visibility: visible;
+    }
     &:after {
       bottom: -2px;
       content: "";
@@ -23,22 +50,87 @@
   }
 }
 
+.nav-toggler {
+  background: none;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  text-decoration: underline;
+
+  @include respond-to(desktop) {
+    display: none;
+  }
+}
+
+$size: 30px;
+
+.nav-close {
+  text-indent: -9999px;
+  padding: 0;
+  width: $size;
+  height: $size;
+  position: absolute;
+  top: Rem(10px);
+  right: Rem(10px);
+  background: none;
+  border: none;
+  outline: none;
+  transform-origin: center center;
+  transform: rotate(-45deg);
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 2px;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    background: $white;
+    transform: translateX(calc($size / 2 - 1px));
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: $white;
+    transform: translateY(calc($size / 2 - 1px));
+  }
+
+  @include respond-to(desktop) {
+    display: none;
+  }
+}
+
 .nav__ul {
-  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
   flex-wrap: wrap;
   position: relative;
-  height: Rem(48px);
-  @include respond-to(tablet) {
+  @include respond-to(desktop) {
+    height: Rem(48px);
+    display: inline-flex;
+    flex-direction: row;
   }
 }
 
 .nav__li {
   display: flex;
-  height: 100%;
   list-style: none;
   margin-left: Rem(15px);
   margin-right: Rem(15px);
   position: relative;
+  @include respond-to(desktop) {
+    height: 100%;
+  }
   &:after {
     content: "";
     height: 2%;
@@ -52,19 +144,27 @@
     z-index: 0;
   }
 }
-
-a.nav__link {
-  color: $black;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  text-decoration: none;
-  font-size: Rem(12px);
-  font-weight: 500;
-  position: relative;
-  @include sanserif;
+.nav__li {
   a {
+    color: $white;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    line-height: 6vh;
+    font-size: 3vh;
+    font-weight: 500;
+    position: relative;
+    @include irvingHeading;
+    @include respond-to(desktop) {
+      @include sanserif;
+      font-size: Rem(12px);
+      font-weight: 500;
+      color: $black;
+    }
     &:hover {
+      font-weight: bold;
+      transition: all 0.35s ease;
       text-transform: none;
     }
   }

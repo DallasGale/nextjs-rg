@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
 import Header from "../header";
+import type { NavType } from "../header";
 
 type LayoutType = {
   children: ReactNode;
-  navItems: string[];
+  navItems: NavType[];
 };
 const Layout: React.FC<LayoutType> = ({ children, navItems }) => {
   return (

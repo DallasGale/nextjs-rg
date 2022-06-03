@@ -27,7 +27,8 @@
 }
 .header__logo {
   box-sizing: border-box;
-  width: Rem(285px);
+  max-width: Rem(285px);
+  width: 100%;
   margin-top: Rem(23px);
   padding-bottom: Rem(15px);
   position: relative;
